@@ -11,10 +11,13 @@ const Questions = () => {
     axios
       .get("http://localhost:3007/api/question")
       .then((res) => {
+        console.log(res)
         // console.log(res.data);
         let jul = res.data.filter((r) => {
-          return r.class == localStorage.getItem("classnumber");
+          return r.class === localStorage.getItem("classnumber");
         });
+        console.log(jul);
+
         setQuestion(jul);
       })
       .catch((err) => {

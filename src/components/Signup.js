@@ -35,7 +35,7 @@ const Signup = () => {
         toast.success("User signed up Successfully");
         localStorage.setItem("classnumber", data.classnumber);
         setTimeout(() => {
-          navigate("/instructions");
+          navigate("/login");
         }, 3000);
       })
       .catch((err) => {

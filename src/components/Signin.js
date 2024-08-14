@@ -23,25 +23,22 @@ const Signin = () => {
       .post("http://localhost:3007/api/studentuser/login", data)
       .then((res) => {
         // setLoading(false);
-        console.log(res.data)
         
-        if (res.data === 'password is incorrect'){
-          toast.error("Incorrect password")
-          return
-        }
-        if (res.data === 'No record found!'){
-          toast.error("No record found! Kindly create an account")
-          return
-        }
-      
-        toast.success(res.data);
-        setTimeout(() => {
-          navigate("/instructions");
-        }, 3000);
+        
+        
+          toast.success("Login successful");
+          setTimeout(() => {
+            navigate("/instructions");
+          }, 3000);
+        
+
       })
       .catch((err) => {
-        console.log(err);
-        toast.error("Error:", err);
+        console.log();
+
+
+    // Provide a more generic error message for unexpected errors
+    toast.error(err.response.data.message);
       });
   };
   return (
