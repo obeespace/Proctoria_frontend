@@ -18,7 +18,7 @@ const Questions = () => {
         });
         console.log(jul);
 
-        setQuestion(jul);
+        setQuestion(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -26,14 +26,14 @@ const Questions = () => {
   }, []);
   return (
     <div className="w-5/6 mx-auto mt-16">
-      <p className="mb-7 font-semibold">
+      <p className="mb-16 font-semibold">
         Kindly attempt all questions. Dont not click on the submit button till
         you are sure you are ready to submit!
       </p>
 
       <div
         
-        className="grid grid-cols-4 gap-10 grid-flow-col"
+        className="lg:grid grid-cols-4  gap-14"
       >
         {question.map((n, index) => {
           return <Link to={`/questions/questiondetails/${n._id}`}><QuestionTemplete key={n._id} index={index + 1} {...n} /></Link>

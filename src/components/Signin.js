@@ -24,8 +24,6 @@ const Signin = () => {
       .then((res) => {
         // setLoading(false);
         
-        
-        
           toast.success("Login successful");
           setTimeout(() => {
             navigate("/instructions");
@@ -36,8 +34,6 @@ const Signin = () => {
       .catch((err) => {
         console.log();
 
-
-    // Provide a more generic error message for unexpected errors
     toast.error(err.response.data.message);
       });
   };
