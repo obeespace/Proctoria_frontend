@@ -34,6 +34,7 @@ const Signup = () => {
         // setLoading(false);
         toast.success("User signed up Successfully");
         localStorage.setItem("classnumber", data.classnumber);
+
         setTimeout(() => {
           navigate("/login");
         }, 3000);

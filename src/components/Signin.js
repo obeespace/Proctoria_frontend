@@ -1,4 +1,5 @@
 import React from "react";
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -23,18 +24,16 @@ const Signin = () => {
       .post("http://localhost:3007/api/studentuser/login", data)
       .then((res) => {
         // setLoading(false);
-        
-          toast.success("Login successful");
-          setTimeout(() => {
-            navigate("/instructions");
-          }, 3000);
-        
-
+        localStorage.setItem("email", data.email);
+        toast.success("Login successful");
+        setTimeout(() => {
+          navigate("/instructions");
+        }, 3000);
       })
       .catch((err) => {
         console.log();
 
-    toast.error(err.response.data.message);
+        toast.error(err.response.data.message);
       });
   };
   return (
@@ -64,7 +63,10 @@ const Signin = () => {
         />
 
         <div className="flex justify-center">
-          <button onClick={handleLogin} className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white">
+          <button
+            onClick={handleLogin}
+            className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white"
+          >
             Sign In
           </button>
         </div>
