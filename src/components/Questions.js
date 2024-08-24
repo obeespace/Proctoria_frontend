@@ -4,10 +4,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import QuestionTemplete from "./QuestionTemplete";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
+
 
 const Questions = () => {
   const [question, setQuestion] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showModal, setshowModal] = useState(false);
+  const [showEndExam, setshowEndExam] = useState(true);
+  const [showScores, setShowScores] = useState(false);
+  const [Result, setResult] = useState();
 
   const email = localStorage.getItem("email");
 
@@ -16,7 +22,11 @@ const Questions = () => {
     axios
       .get(`http://localhost:3007/api/question/final-result/${email}`)
       .then((res) => {
-        console.log(res);
+        setResult(res.data);
+        setshowModal(true);
+        setshowEndExam(false)
+        setShowScores(true);
+
       })
       .catch((err) => {
         console.log(err);
@@ -59,12 +69,48 @@ const Questions = () => {
       </div>
       <div className="flex justify-end">
         <button
-          onClick={submitFinalAnswers}
+          onClick={()=>setshowModal(true)}
           className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white"
         >
           End Exams
         </button>
       </div>
+ 
+      {/* Modal */}
+      {showModal && <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg md:w-full w-11/12 max-w-md mx-4">
+        {showEndExam && <div className="mx-10 my-5">
+          <p className="font-bold text-center mb-10">
+            Are sure you have attempted all questions and ready to end exams?
+          </p>
+          <div className="flex gap-5"><button onClick={submitFinalAnswers} className="border border-rose-900 bg-rose-50 font-semibold px-10 py-3 w-max rounded-xl">
+            End Exams
+          </button>
+
+          <button onClick={()=>{setshowModal(false)}} className="bg-rose-900 px-10 font-semibold py-3 w-max rounded-xl text-white">
+            Cancel
+          </button>
+          </div>
+        </div>}
+
+        {showScores && <div className="mx-10 my-5 text-center">
+          
+
+          <p>Your score is</p>
+          <p className="text-rose-900 text-6xl my-8 font-semibold">{Result.finalScore}</p>
+
+          <p className="font-bold text-center mb-10">
+            You correctly answered {Result.correctCount} out of {Result.totalQuestions}  questions
+          </p>
+          <div className="">
+
+          <button onClick={()=>{setshowModal(false); setshowEndExam(true); setShowScores(false)}} className="bg-rose-900 px-10 font-semibold py-3 w-max rounded-xl text-white">
+            Close
+          </button>
+          </div>
+        </div>}
+      </div>
+    </div>} 
     </div>
   );
 };
