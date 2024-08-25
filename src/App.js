@@ -7,6 +7,8 @@ import Signin from './components/Signin';
 import Questions from './components/Questions';
 import Prequestions from './components/Prequestions';
 import ShowQuestion from './components/ShowQuestion';
+import CreateQuestion from './components/Admin/CreateQuestion';
+import Admin from './components/Admin/Admin';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Route path='/questions' element={<Questions/>}/>
       <Route path='/instructions' element={<Prequestions/>}/>
       <Route path='/questions/questiondetails/:id' element={<ShowQuestion/>}/>
+      <Route path='/admin' element={<Admin/>}/>
+      <Route path='/admin/createquestion' element={<CreateQuestion/>}/>
 
       
       {/* <Route path='/create/books' element={<CreateBook/>}/>

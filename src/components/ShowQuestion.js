@@ -30,7 +30,7 @@ const ShowQuestion = () => {
       toast.success("option submitted successfully");
           setTimeout(() => {
             navigate("/questions");
-          }, 3000);
+          }, 1500);
     })
     .catch((err) => {
       console.log(err)
