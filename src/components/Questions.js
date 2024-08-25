@@ -38,14 +38,8 @@ const Questions = () => {
     axios
       .get("http://localhost:3007/api/question")
       .then((res) => {
-        console.log(res);
-        // console.log(res.data);
-        let jul = res.data.filter((r) => {
-          return r.class === localStorage.getItem("classnumber");
-        });
-        console.log(jul);
-
-        setQuestion(res.data);
+        const result = res.data.filter((z) => z.classnumber == localStorage.getItem("classnumber"));
+        setQuestion(result);
       })
       .catch((err) => {
         console.log(err);

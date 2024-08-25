@@ -46,7 +46,7 @@ const CreateQuestion = () => {
 
   return (
     <div className="mt-20 lg:w-5/12 w-5/6 mx-auto">
-      <p className="text-2xl text-center font-bold">Sign Up</p>
+      <p className="text-2xl text-center font-bold">Create Question</p>
       <div className="mt-10">
         <input
           className="border-b border-rose-900 px-3 py-1 w-full mb-5 rounded-md placeholder:text-gray-400 outline-none"
