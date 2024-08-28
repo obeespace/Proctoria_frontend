@@ -53,7 +53,7 @@ const Questions = () => {
       </p>
 
       <div className="lg:grid grid-cols-4  gap-14">
-        {question.map((n, index) => {
+        {question && question.map((n, index) => {
           return (
             <Link to={`/questions/questiondetails/${n._id}`}>
               <QuestionTemplete key={n._id} index={index + 1} {...n} />

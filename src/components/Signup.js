@@ -46,7 +46,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="mt-20 lg:w-5/12 mx-auto">
+    <div className="mt-20 lg:w-5/12 w-5/6 mx-auto">
       <p className="text-2xl text-center font-bold">Sign Up</p>
       <div className="mt-10">
         <div className="flex gap-5">

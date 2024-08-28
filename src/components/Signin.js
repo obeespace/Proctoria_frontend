@@ -24,6 +24,8 @@ const Signin = () => {
       .post("http://localhost:3007/api/studentuser/login", data)
       .then((res) => {
         // setLoading(false);
+        localStorage.setItem("classnumber", res.data.classnumber);
+        localStorage.setItem('token', res.data.token)
         localStorage.setItem("email", data.email);
         toast.success("Login successful");
         setTimeout(() => {
@@ -37,7 +39,7 @@ const Signin = () => {
       });
   };
   return (
-    <div className="mt-32 lg:w-4/12 mx-auto">
+    <div className="mt-32 lg:w-4/12 w-5/6 mx-auto">
       <p className="text-2xl text-center font-bold">Sign In</p>
       <div className="mt-10">
         <input
