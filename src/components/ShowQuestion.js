@@ -21,7 +21,7 @@ const ShowQuestion = () => {
 
   const submitAnswer = () => {
     axios
-      .post("http://localhost:3007/api/question/submit-answer", {
+      .post("https://proctoria-backend.onrender.com/api/question/submit-answer", {
         questionId: id,
         answer: selectedOption,
         email: localStorage.getItem("email"),

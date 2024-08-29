@@ -30,7 +30,7 @@ const Questions = () => {
   const submitFinalAnswers = () => {
     console.log(email);
     axios
-      .get(`http://localhost:3007/api/question/final-result/${email}`)
+      .get(`https://proctoria-backend.onrender.com/api/question/final-result/${email}`)
       .then((res) => {
         setResult(res.data);
         setshowModal(true);
