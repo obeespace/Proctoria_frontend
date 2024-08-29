@@ -41,7 +41,7 @@ const ShowQuestion = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:3007/api/question/${id}`)
+      .get(`https://proctoria-backend.onrender.com/api/question/${id}`)
       .then((res) => {
         setQuestion(res.data);
         // console.log(res.data);

@@ -29,7 +29,7 @@ const Signup = () => {
     };
 
     axios
-      .post("http://localhost:3007/api/studentuser/register", data)
+      .post("https://proctoria-backend.onrender.com/api/studentuser/register", data)
       .then(() => {
         // setLoading(false);
         toast.success("User signed up Successfully");

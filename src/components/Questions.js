@@ -36,7 +36,7 @@ const Questions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3007/api/question")
+      .get("https://proctoria-backend.onrender.com/api/question")
       .then((res) => {
         const result = res.data.filter((z) => z.classnumber == localStorage.getItem("classnumber"));
         setQuestion(result);
@@ -73,7 +73,7 @@ const Questions = () => {
       {/* Modal */}
       {showModal && <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-lg md:w-full w-11/12 max-w-md mx-4">
-        {showEndExam && <div className="mx-10 my-5">
+        {showEndExam && <div className="mx-10 my-5 z-50">
           <p className="font-bold text-center mb-10">
             Are sure you have attempted all questions and ready to end exams?
           </p>

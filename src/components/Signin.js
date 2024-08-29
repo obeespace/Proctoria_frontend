@@ -21,7 +21,7 @@ const Signin = () => {
     };
 
     axios
-      .post("http://localhost:3007/api/studentuser/login", data)
+      .post("https://proctoria-backend.onrender.com/api/studentuser/login", data)
       .then((res) => {
         // setLoading(false);
         localStorage.setItem("classnumber", res.data.classnumber);
