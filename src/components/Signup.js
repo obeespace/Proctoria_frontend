@@ -72,16 +72,14 @@ const Signup = () => {
             required
           />
         </div>
-        <input
-          className="border-b border-rose-900 px-3 py-1 w-full mb-5 rounded-md placeholder:text-gray-400 outline-none"
-          type="number"
-          id="class"
-          placeholder="Enter a classnumber between 1 and 5"
-          name="class"
-          value={classnumber}
-          onChange={(e) => setClassNumber(e.target.value)}
-          required
-        />
+        <select value={classnumber} onChange={(e) => setClassNumber(e.target.value)} className="border-b border-rose-900 w-full px-2 py-1 mb-5 rounded-md placeholder:text-gray-400 outline-none">
+          <option value="">Select a Class</option>
+          <option value="1">Class 1</option>
+          <option value="2">Class 2</option>
+          <option value="3">Class 3</option>
+          <option value="4">Class 4</option>
+          <option value="5">Class 5</option>
+        </select>
 
         <input
           className="border-b border-rose-900 px-3 py-1 w-full mb-5 rounded-md placeholder:text-gray-400 outline-none"
