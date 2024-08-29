@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { motion } from "framer-motion"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -124,12 +125,12 @@ const CreateQuestion = () => {
         />
 
         <div className="flex justify-center">
-          <button
+          <motion.button whileTap={{scale: 0.7}}
             onClick={handleSubmit}
             className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white"
           >
             Create Question
-          </button>
+          </motion.button>
         </div>
         <ToastContainer />
       </div>

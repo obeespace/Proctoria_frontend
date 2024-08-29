@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -9,34 +10,34 @@ import { useParams } from "react-router-dom";
 const ShowQuestion = () => {
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
-  }
-
+  };
 
   const { id } = useParams();
 
   const submitAnswer = () => {
-    axios.post('http://localhost:3007/api/question/submit-answer', {
-      questionId: id,
-      answer: selectedOption,
-      email: localStorage.getItem('email')
-    })
-    .then((res) => {
-      console.log(res)
-      toast.success("option submitted successfully");
-          setTimeout(() => {
-            navigate("/questions");
-          }, 1500);
-    })
-    .catch((err) => {
-      console.log(err)
-      toast.error(err.response.data.message);
-    })
-  }
+    axios
+      .post("http://localhost:3007/api/question/submit-answer", {
+        questionId: id,
+        answer: selectedOption,
+        email: localStorage.getItem("email"),
+      })
+      .then((res) => {
+        console.log(res);
+        toast.success("option submitted successfully");
+        setTimeout(() => {
+          navigate("/questions");
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.message);
+      });
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -108,10 +109,17 @@ const ShowQuestion = () => {
           </div>
         </div>
 
-        <div className='flex justify-end'><button onClick={submitAnswer} className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white">Submit</button></div>
+        <div className="flex justify-end">
+          <motion.button
+            whileTap={{ scale: 0.7 }}
+            onClick={submitAnswer}
+            className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white"
+          >
+            Submit
+          </motion.button>
+        </div>
       </div>
       <ToastContainer />
-
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { motion } from "framer-motion"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -46,7 +47,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="mt-20 lg:w-5/12 w-5/6 mx-auto">
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.9 }} className="mt-20 lg:w-5/12 w-5/6 mx-auto">
       <p className="text-2xl text-center font-bold">Sign Up</p>
       <div className="mt-10">
         <div className="flex gap-5">
@@ -111,16 +116,16 @@ const Signup = () => {
           </p>
         </div>
         <div className="flex justify-center">
-          <button
+        <motion.button whileTap={{scale: 0.7}}
             onClick={handleSubmit}
             className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white"
           >
             Create Account
-          </button>
+          </motion.button>
         </div>
         <ToastContainer />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -10,10 +10,11 @@ import ShowQuestion from "./components/ShowQuestion";
 import CreateQuestion from "./components/Admin/CreateQuestion";
 import Admin from "./components/Admin/Admin";
 import PrivateRoute from "./components/PrivateRoute";
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   return (
-    <div>
+    <AnimatePresence wait>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,7 +36,7 @@ function App() {
       <Route path='/books/edit/:id' element={<EditBook/>}/>
       <Route path='/books/delete/:id' element={<DeleteBooks/>}/> */}
       </Routes>
-    </div>
+    </AnimatePresence>
   );
 }
 

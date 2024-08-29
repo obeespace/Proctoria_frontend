@@ -2,6 +2,7 @@ import React from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"
 import axios from "axios";
 
 const Signin = () => {
@@ -39,7 +40,11 @@ const Signin = () => {
       });
   };
   return (
-    <div className="mt-32 lg:w-4/12 w-5/6 mx-auto">
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.9 }} className="mt-32 lg:w-4/12 w-5/6 mx-auto">
       <p className="text-2xl text-center font-bold">Sign In</p>
       <div className="mt-10">
         <input
@@ -65,16 +70,16 @@ const Signin = () => {
         />
 
         <div className="flex justify-center">
-          <button
+        <motion.button whileTap={{scale: 0.7}}
             onClick={handleLogin}
             className="bg-rose-900 mt-10 px-10 font-semibold py-3 w-max mb-3 rounded-xl text-white"
           >
             Sign In
-          </button>
+          </motion.button>
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </motion.div>
   );
 };
 
